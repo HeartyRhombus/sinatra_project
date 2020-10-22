@@ -1,7 +1,7 @@
 class PlayersController < ApplicationController
     # index
     get "/players" do
-        erb :'players/index'
+        erb :'players/home'
     end
 
 # new
