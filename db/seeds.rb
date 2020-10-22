@@ -1,0 +1,5 @@
+Player.new(name: "Kayla", gamer_tag: "HeartyRhombus", preferred_platform: "Xobx")
+Player.new(name: "Gary", gamer_tag: "MisterGam", preferred_platform: "Switch")
+
+Game.new(title: "Fable III", platform: "Xbox", release_date: "October 26, 2010", rating: "M", description: "The third game in the Fable series, the story focuses on the player character's struggle to overthrow the King of Albion, the player character's brother, by forming alliances and building support for a revolution.")
+Game.new(title: "Stardew Valley", platform: "Switch", release_date: "February 26, 2016", rating: "E", description: "You’ve inherited your grandfather’s old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life. Can you learn to live off the land and turn these overgrown fields into a thriving home? It won’t be easy. Ever since Joja Corporation came to town, the old ways of life have all but disappeared. The community center, once the town’s most vibrant hub of activity, now lies in shambles. But the valley seems full of opportunity. With a little dedication, you might just be the one to restore Stardew Valley to greatness!")
