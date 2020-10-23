@@ -35,7 +35,9 @@ class GamesController < ApplicationController
 
 #show
     get "/games/:id" do
-        erb :"games/#{@game.id}"
+        # binding.pry
+        @game = current_user.games.find_by(params)
+        erb :"games/show"
     end
 
 # edit
