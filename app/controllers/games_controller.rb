@@ -42,11 +42,24 @@ class GamesController < ApplicationController
 
 # edit
     get "/games/:id/edit" do
+        @game = current_user.games.find_by(params)
+        # binding.pry
         erb :"games/edit"
     end
 
     patch "/games/:id" do
-        
+        @game = current_user.games.find_by(id: params[:id])
+        @game.title = params[:title]
+        @game.platform = params[:platform]
+        @game.release_date = params[:release_date]
+        @game.rating = params[:rating]
+        @game.description = params[:description]
+        # binding.pry
+        if @game.save
+            redirect "/games/#{@game.id}"
+        else
+            redirect "/games/:id/edit"
+        end
     end
 
 #delete
