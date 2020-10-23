@@ -1,0 +1,17 @@
+<!-- go back to player homepage(games/index)
+delete & edit a game
+stretch goal: button @ bottom show their games by platform(filters)
+stretch goal: view all games in the whole library(not just theirs - view only)
+-->
+
+<h3><%= @game.title %></h3>
+<p>
+    <p>Platform: <%= @game.platform %></p>
+    <p>Release Date: <%= @game.release_date %></p>
+    <p>ESRB Rating: <%= @game.rating %></p>
+    Description: </br>
+    <p><%= @game.description %></p></br>
+</p>
+
+<a href="/games"><button> Player Home </button></a></br>
+<a href="/logout"><button>Log Out</button></a>
