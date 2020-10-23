@@ -16,7 +16,21 @@ class GamesController < ApplicationController
     end
 
     post "/games" do
-        
+        # binding.pry
+        if game = Game.find_by(title: params[:title])
+            current_user.games << game
+            redirect '/games'
+        else
+            game = Game.new(params)
+            if game.save
+                current_user.games << game
+                redirect '/games'
+            else
+                redirect '/games/new'
+            end
+        end
+        # binding.pry
+
     end
 
 #show
