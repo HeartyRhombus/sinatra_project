@@ -5,7 +5,7 @@ class PlayersController < ApplicationController
     end
 
 # new
-    get "/players/new" do
+    get "/players/signup" do
         erb :'players/new'
     end
 

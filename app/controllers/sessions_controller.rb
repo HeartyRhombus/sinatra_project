@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 
     post '/login' do
         player = Player.find_by(email: params[:email])
-        if player && player.authenticate{params[:password])
+        if player && player.authenticate(params[:password])
             session[:user_id] = player.id
             redirect '/players/home'
         end
