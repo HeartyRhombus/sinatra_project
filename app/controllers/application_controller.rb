@@ -11,4 +11,14 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
+  helpers do
+    def logged_in?
+      !!session[:user_id]
+    end
+
+    def current_user
+      @user ||= Player.find_by(id: session[:user_id]) if logged_in?
+    end
+  end
+
 end
