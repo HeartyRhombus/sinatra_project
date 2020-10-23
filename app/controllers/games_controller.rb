@@ -2,6 +2,11 @@ class GamesController < ApplicationController
 
 # index
     get "/games" do
+        # binding.pry
+        if logged_in?
+            current_user
+        end
+        # current_user.games
         erb :'games/index'
     end
 
