@@ -5,7 +5,7 @@
 <!-- add a game, log out, view a game from a link 
 -->
 <% current_user.games.each do |g| %>
-    <p><a href="/games/#{g.id}"><%= g.title %></a></p>
+    <p><a href="/games/<%= g.id %>"><%= g.title %></a></p>
 <% end %>
 
 <p><a href="/games/new"><button>Add a Game</button></a></p>
