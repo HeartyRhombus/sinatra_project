@@ -14,7 +14,7 @@ class PlayersController < ApplicationController
             gamer_tag: params[:player][:gamer_tag],
             preferred_platform: params[:player][:preferred_platform]
         )
-        binding.pry
+        # binding.pry
         if player.save
             redirect '/games'
         else
