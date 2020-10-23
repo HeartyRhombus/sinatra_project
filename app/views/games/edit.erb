@@ -1,0 +1,28 @@
+<h2>Edit the Game</h2>
+<br>
+<form method="POST" action="/games/<%= @game.id %>">
+<input id="hidden" type="hidden" name="_method" value="PATCH">
+    <label>Title: 
+        <input type = text name="title" value="<%= @game.title %>">
+    </label>
+    </br>
+    <label>Platform: 
+        <input type = text name="platform" value="<%= @game.platform %>">
+    </label>
+    </br>
+    <label>Release Date: 
+        <input type = text name="release_date" value="<%= @game.release_date %>">
+    </label>
+    </br>
+    <label>Rating: 
+        <input type = text name="rating" value="<%= @game.rating %>">
+    </label>
+    </br>
+    <label for="description">Description: </label></br>
+
+        <textarea id="description" name="description" rows="8" cols="80"><%= @game.description %>
+        </textarea>
+    <br></br>
+    <p><input type="submit" value="Edit Game"></p>
+
+</form>
