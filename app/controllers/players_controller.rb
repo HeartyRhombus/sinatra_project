@@ -7,7 +7,20 @@ class PlayersController < ApplicationController
 
     post "/players" do
         binding.pry
-        redirect '/games'
+        player = Player.new(
+            name: params[:player][:name],  
+            email: params[:email],  
+            password: params[:password],  
+            gamer_tag: params[:player][:gamer_tag],
+            preferred_platform: params[:player][:preferred_platform]
+        )
+        binding.pry
+        if player.save
+            redirect '/games'
+        else
+            redirect '/signup'
+        end
+        
     end
 
 end
