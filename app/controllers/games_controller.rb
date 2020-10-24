@@ -66,7 +66,7 @@ class GamesController < ApplicationController
     delete "/games/:id" do
         # binding.pry
         game = current_user.games.find_by(id: params[:id])
-        game.delete
+        current_user.games.delete(game)
         redirect '/games'        
     end
 
