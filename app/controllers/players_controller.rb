@@ -9,7 +9,7 @@ class PlayersController < ApplicationController
         # binding.pry
         player = Player.new(
             name: params[:player][:name],  
-            email: params[:email],  
+            email: params[:email].downcase,  
             password: params[:password],  
             gamer_tag: params[:player][:gamer_tag],
             preferred_platform: params[:player][:preferred_platform]

@@ -5,8 +5,8 @@ class SessionsController < ApplicationController
     end
 
     post '/login' do
+        player = Player.find_by(email: params[:player][:email].downcase)
         # binding.pry
-        player = Player.find_by(email: params[:player][:email])
         if player && player.authenticate(params[:password])
             session[:user_id] = player.id
             redirect '/games'
