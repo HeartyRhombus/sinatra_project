@@ -2,23 +2,23 @@
 <br>
 <form method="POST" action="/games/<%= @game.id %>" class="formRounded">
 <input id="hidden" type="hidden" name="_method" value="PATCH">
-    <label>Title: 
+    <label><b><i>Title: </i></b></br>
         <input type = text name="title" value="<%= @game.title %>">
     </label>
-    </br>
-    <label>Platform: 
+    <br></br>
+    <label><b><i>Platform: </i></b></br>
         <input type = text name="platform" value="<%= @game.platform %>">
     </label>
-    </br>
-    <label>Release Date: 
+    <br></br>
+    <label><b><i>Release Date: </i></b></br>
         <input type = text name="release_date" value="<%= @game.release_date %>">
     </label>
-    </br>
-    <label>Rating: 
+    <br></br>
+    <label><b><i>Rating: </i></b></br>
         <input type = text name="rating" value="<%= @game.rating %>">
     </label>
-    </br>
-    <label for="description">Description: </label></br>
+    <br></br>
+    <label for="description"><b><i>Description: </i></b></label></br>
 
         <textarea id="description" name="description" rows="8" cols="80"><%= @game.description %>
         </textarea>

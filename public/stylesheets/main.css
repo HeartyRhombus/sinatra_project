@@ -34,17 +34,22 @@
 
   button {
     border-radius: 25px;
-    padding: 10px
+    padding: 10px;
+    width: 125px
   }
 
   .formRounded input {
+    border: 1px solid black;
     border-radius: 25px;
-    padding: 10px
+    padding: 10px;
+    width: 125px;
   }
 
   textarea {
     border-radius: 25px;
     padding: 10px;
+    resize: none;
+    overflow: hidden;
   }
 
   h1 {
