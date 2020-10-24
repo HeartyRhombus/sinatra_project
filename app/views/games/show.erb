@@ -16,7 +16,7 @@ stretch goal: view all games in the whole library(not just theirs - view only)
 
 <p><a href="/games/<%= @game.id %>/edit"><button>Edit Game</button></a></p>
 <p>
-    <form method="POST" action="/games/<%= @game.id %>">
+    <form method="POST" action="/games/<%= @game.id %>"  class="formRounded">
     <input id="hidden" type="hidden" name="_method" value="delete">
         <input type="submit" value="Delete Game">
     </form>
