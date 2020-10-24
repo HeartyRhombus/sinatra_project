@@ -17,10 +17,12 @@ class GamesController < ApplicationController
 
     post "/games" do
         # binding.pry
-        if game = Game.find_by(title: params[:title])
+        if game = Game.find_by(title: params[:title].downcase)
             current_user.games << game
             redirect '/games'
         else
+            # binding.pry
+            params[:title].downcase!
             game = Game.new(params)
             if game.save
                 current_user.games << game
