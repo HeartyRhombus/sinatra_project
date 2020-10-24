@@ -1,6 +1,7 @@
 <h2>Edit the Game</h2>
 <br>
-<form method="POST" action="/games/<%= @game.id %>">
+<form method="POST" action="/games/<%= @game.id %>" class="formRounded">
+    <label>E-Mail: >
 <input id="hidden" type="hidden" name="_method" value="PATCH">
     <label>Title: 
         <input type = text name="title" value="<%= @game.title %>">
