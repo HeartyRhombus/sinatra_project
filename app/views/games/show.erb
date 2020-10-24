@@ -4,7 +4,7 @@ stretch goal: button @ bottom show their games by platform(filters)
 stretch goal: view all games in the whole library(not just theirs - view only)
 -->
 
-<h3><%= @game.title %></h3>
+<h3><%= @game.title.gsub(/\w+/, &:capitalize) %></h3>
 <p>
     <p>Platform: <%= @game.platform %></p>
     <p>Release Date: <%= @game.release_date %></p>
