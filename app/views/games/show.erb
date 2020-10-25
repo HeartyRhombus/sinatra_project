@@ -5,6 +5,7 @@ stretch goal: view all games in the whole library(not just theirs - view only)
 -->
 
 <h3><%= @game.title.gsub(/\w+/, &:capitalize) %></h3>
+<hr width="25%">
 <p>
     <p>Platform: <%= @game.platform %></p>
     <p>Release Date: <%= @game.release_date %></p>
@@ -14,12 +15,22 @@ stretch goal: view all games in the whole library(not just theirs - view only)
 </p>
 
 
-<p><a href="/games/<%= @game.id %>/edit"><button>Edit Game</button></a></p>
+<p></p>
 <p>
-    <form method="POST" action="/games/<%= @game.id %>"  class="formRounded">
-    <input id="hidden" type="hidden" name="_method" value="delete">
-        <input type="submit" value="Delete Game">
-    </form>
+    
 </p>
-<p><a href="/games"><button> Player Home </button></a></p>
-<p><a href="/logout"><button>Log Out</button></a></p>
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="/games"><button> Player Home </button></a></li>
+            <li><a href="/logout"><button>Log Out</button></a></li>
+            <li><a href="/games/<%= @game.id %>/edit"><button>Edit Game</button></a></li>
+            <li><form method="POST" action="/games/<%= @game.id %>"  class="formRounded">
+                    <input id="hidden" type="hidden" name="_method" value="delete">
+                    <input type="submit" value="Delete Game">
+                </form>
+            </li>
+        </ul>
+      </nav>
+</header>

@@ -38,6 +38,14 @@
     width: 125px
   }
 
+  button:hover {
+    background-color: powderblue;
+  }
+
+  input[type="submit"]:hover {
+    background-color: powderblue
+  }
+
   .formRounded input {
     border: 1px solid black;
     border-radius: 25px;
@@ -51,6 +59,22 @@
     resize: none;
     overflow: hidden;
   }
+
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left; /* step 6 */
+}
+nav {
+  border-top: 1px solid green;
+  padding: 5px
+}
+
+nav li {
+  display: inline-block;
+  padding: 5px;
+}
 
   h1 {
     font-size: 36px;
