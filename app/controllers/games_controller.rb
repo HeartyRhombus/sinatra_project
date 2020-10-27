@@ -18,11 +18,9 @@ class GamesController < ApplicationController
             current_user.games << game
             redirect '/games'
         else
-
             params[:title].downcase!
-            game = Game.new(params)
+            game = current_user.games.build(params)
             if game.save
-                current_user.games << game
                 redirect '/games'
             else
                 redirect '/games/new'
