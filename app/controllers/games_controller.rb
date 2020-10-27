@@ -2,11 +2,9 @@ class GamesController < ApplicationController
 
 # index
     get "/games" do
-        # binding.pry
         if logged_in?
             current_user
         end
-        # current_user.games
         erb :'games/index'
     end
 
@@ -16,12 +14,11 @@ class GamesController < ApplicationController
     end
 
     post "/games" do
-        # binding.pry
         if game = Game.find_by(title: params[:title].downcase)
             current_user.games << game
             redirect '/games'
         else
-            # binding.pry
+
             params[:title].downcase!
             game = Game.new(params)
             if game.save
@@ -31,13 +28,11 @@ class GamesController < ApplicationController
                 redirect '/games/new'
             end
         end
-        # binding.pry
 
     end
 
 #show
     get "/games/:id" do
-        # binding.pry
         @game = current_user.games.find_by(params)
         erb :"games/show"
     end
@@ -45,7 +40,6 @@ class GamesController < ApplicationController
 # edit
     get "/games/:id/edit" do
         @game = current_user.games.find_by(params)
-        # binding.pry
         erb :"games/edit"
     end
 
@@ -56,7 +50,6 @@ class GamesController < ApplicationController
         @game.release_date = params[:release_date]
         @game.rating = params[:rating]
         @game.description = params[:description]
-        # binding.pry
         if @game.save
             redirect "/games/#{@game.id}"
         else
@@ -66,7 +59,6 @@ class GamesController < ApplicationController
 
 #delete
     delete "/games/:id" do
-        # binding.pry
         game = current_user.games.find_by(id: params[:id])
         current_user.games.delete(game)
         redirect '/games'        

@@ -6,7 +6,6 @@ class PlayersController < ApplicationController
     end
 
     post "/players" do
-        # binding.pry
         player = Player.new(
             name: params[:player][:name],  
             email: params[:email].downcase,  
@@ -14,7 +13,6 @@ class PlayersController < ApplicationController
             gamer_tag: params[:player][:gamer_tag],
             preferred_platform: params[:player][:preferred_platform]
         )
-        # binding.pry
         if player.save
             session[:user_id] = player.id
             redirect '/games'
