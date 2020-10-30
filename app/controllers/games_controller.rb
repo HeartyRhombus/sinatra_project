@@ -26,7 +26,8 @@ class GamesController < ApplicationController
                 redirect '/games'
             else
                 params[:title].downcase!
-                game = current_user.games.create(params)
+                game = current_user.created_games.create(params)
+                current_user.games << game
                 if game.save
                     redirect "/games"
                 else
@@ -56,7 +57,7 @@ class GamesController < ApplicationController
 # edit
     get "/games/:id/edit" do
         if logged_in?
-            @game = current_user.games.find_by(params)
+            @game = current_user.created_games.find_by(params)
             if @game
                 erb :"games/edit"
             else
