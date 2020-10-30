@@ -70,7 +70,7 @@ class GamesController < ApplicationController
 
     patch "/games/:id" do
         if logged_in?
-            @game = current_user.games.find_by(id: params[:id])
+            @game = current_user.created_games.find_by(id: params[:id])
             if @game
                 @game.title = params[:title]
                 @game.platform = params[:platform]
