@@ -13,6 +13,12 @@ stretch goal: view all games in the whole library(not just theirs - view only)
     Description: </br>
     <p><%= @game.description %></p></br>
 </p>
+<p>
+    <p>Also being played by: </p>
+    <% @game.players.each do |player| %>
+    <%= player.gamer_tag || player.name %></br>
+    <% end %>
+</p>
 
 
 <p></p>
