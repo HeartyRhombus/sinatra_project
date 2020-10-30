@@ -31,7 +31,9 @@ stretch goal: view all games in the whole library(not just theirs - view only)
         <ul>
             <li><a href="/games"><button> Player Home </button></a></li>
             <li><a href="/logout"><button>Log Out</button></a></li>
+            <% if current_user.created_games.include?(@game)%>
             <li><a href="/games/<%= @game.id %>/edit"><button>Edit Game</button></a></li>
+            <% end %>
             <li><form method="POST" action="/games/<%= @game.id %>"  class="formRounded">
                     <input id="hidden" type="hidden" name="_method" value="delete">
                     <input type="submit" value="Delete Game">
