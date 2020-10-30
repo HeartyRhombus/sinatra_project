@@ -20,17 +20,21 @@ class GamesController < ApplicationController
     end
 
     post "/games" do
-        if game = Game.find_by(title: params[:title].downcase)
-            current_user.games << game
-            redirect '/games'
-        else
-            params[:title].downcase!
-            game = current_user.games.create(params)
-            if game.save
-                redirect "/games"
+        if logged_in?
+            if game = Game.find_by(title: params[:title].downcase)
+                current_user.games << game
+                redirect '/games'
             else
-                redirect '/games/new'
+                params[:title].downcase!
+                game = current_user.games.create(params)
+                if game.save
+                    redirect "/games"
+                else
+                    redirect '/games/new'
+                end
             end
+        else
+            redirect '/login'
         end
 
     end
@@ -39,7 +43,11 @@ class GamesController < ApplicationController
     get "/games/:id" do
         if logged_in?
             @game = current_user.games.find_by(params)
-            erb :"games/show"
+            if @game
+                erb :"games/show"
+            else
+                redirect '/games'
+            end
         else
             redirect '/login'
         end
@@ -49,23 +57,35 @@ class GamesController < ApplicationController
     get "/games/:id/edit" do
         if logged_in?
             @game = current_user.games.find_by(params)
-            erb :"games/edit"
+            if @game
+                erb :"games/edit"
+            else
+                redirect '/games'
+            end
         else
             redirect '/login'
         end
     end
 
     patch "/games/:id" do
-        @game = current_user.games.find_by(id: params[:id])
-        @game.title = params[:title]
-        @game.platform = params[:platform]
-        @game.release_date = params[:release_date]
-        @game.rating = params[:rating]
-        @game.description = params[:description]
-        if @game.save
-            redirect "/games/#{@game.id}"
+        if logged_in?
+            @game = current_user.games.find_by(id: params[:id])
+            if @game
+                @game.title = params[:title]
+                @game.platform = params[:platform]
+                @game.release_date = params[:release_date]
+                @game.rating = params[:rating]
+                @game.description = params[:description]
+                if @game.save
+                    redirect "/games/#{@game.id}"
+                else
+                    redirect "/games/:id/edit"
+                end
+            else
+                redirect '/games'
+            end
         else
-            redirect "/games/:id/edit"
+            redirect '/login'
         end
     end
 
@@ -73,8 +93,12 @@ class GamesController < ApplicationController
     delete "/games/:id" do
         if logged_in?
             game = current_user.games.find_by(id: params[:id])
-            current_user.games.delete(game)
-            redirect '/games'        
+            if game
+                current_user.games.delete(game)
+                redirect '/games'        
+            else
+                redirect '/games'
+            end
         else
             redirect '/login'
         end
